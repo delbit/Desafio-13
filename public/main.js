@@ -29,6 +29,7 @@ submit.addEventListener('submit', (e) => {
   }
   console.log(inputs);
   socket.emit('new-product', inputs);
+  submit.reset();
 });
 
 render = (data) => {
@@ -54,4 +55,17 @@ render = (data) => {
     `;
   newElement.innerHTML = htmlProducto;
   listProduct.appendChild(newElement);
+};
+
+renderChat = (data) => {
+  let chatUl = document.getElementById('messages');
+  let newElement = document.createElement('li');
+  newElement.className = 'message left appeared';
+  let htmlMessage = `
+  <div class="avatar"></div>
+  <div class="text_wrapper">
+    <div class="text">${data}</div>
+  </div>`;
+  newElement.innerHTML = htmlMessage;
+  chatUl.appendChild(newElement);
 };

@@ -1,12 +1,28 @@
 
 {{#if mostrarForm}}
-  {{> form}}
-{{/if}}
+  <div class='container mt-5'>
+    <div class='row justify-content-center'>
+      <div class='col-12 col-md-6'>
 
-{{#if mostrarList}}
-  {{> list_prod}}
+        {{> form}}
+        {{> list_prod}}
+      
+      </div>
+
+      <div class='col-12 col-md-6'>
+        {{> chat}}
+      </div>
+    </div>
+  </div>
 {{/if}}
 
 {{#if mostrarVista}}
-  {{> visual}}
+
+  <div class='container mt-5'>
+    <div class='row justify-content-center'>
+      <div class='col-12 col-md-6'>
+        {{> visual}}
+      </div>
+    </div>
+  </div>
 {{/if}}
