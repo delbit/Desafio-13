@@ -1,7 +1,10 @@
-### Desafió 10
+### Desafió 12
 
 ##### Changelog
 
+- Se implementa el Chat de soporte via websocket
+- Nueva Clase para mensajes
+- Rediseño del main para soportar el chat
 - El form hace uso de websocket y no de api
 - Nuevo listar productos para el landing page
 - Codigo Modular, Separando responsabilidades

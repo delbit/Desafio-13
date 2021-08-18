@@ -27,6 +27,7 @@ const objToJSON = (contenido) => {
   return JSON.stringify(contenido, undefined, 2);
 };
 
+//Esta funcion se encarga de leer y devolver los mensajes de existir el archivo de mensajes.
 function leerMessages() {
   let filenames = fs.readdirSync(publicPathFolder);
   const found = filenames.find((element) => 'messages.txt' === element);
@@ -38,6 +39,7 @@ function leerMessages() {
   }
 }
 
+// Esta función guarda el array de mensajes en un archivo con formato JSON
 function guardarMessages(messages) {
   fs.writeFileSync(publicPathFileName, objToJSON(messages), 'utf-8');
 }

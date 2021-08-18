@@ -1,33 +1,34 @@
 const socket = io.connect();
 
-// Cuando arrancamos pedimos la data que hay actualmente enviando un socket
+// Cuando Iniciamos pedimos la data que hay actualmente enviando un socket
 socket.emit('askProducts');
 socket.emit('askMessages');
 
-// Si emite un mensaje individual
+// WebSocket que recibe mensajes desde le backend si el form no es correcto
 socket.on('messages', (data) => {
   console.log('RECIBI MENSAJE');
   alert(data);
 });
 
-// Mensaje para todos los clientes
+// WebSocket que recibe mensajes desde le backend para pintar un nuevo producto
 socket.on('update', (products) => {
   products.forEach((product) => {
     render(product);
   });
 });
 
-// Mensaje del chat para todos los clientes
+// // WebSocket que recibe mensajes desde le backend para pintar un nuevo mensaje del chat
 socket.on('updateChat', (messages) => {
   messages.forEach((message) => {
     renderChat(message);
   });
 });
 
+//Formularios
 let submit = document.getElementById('form-product');
 let submitChat = document.getElementById('form-Chat');
-//let chatUl = document.getElementById('messages');
 
+//Eventlistener para el form del submit de Producto y lo enviá al backend
 submit.addEventListener('submit', (e) => {
   let form = e.target;
   let inputs = new Object();
@@ -42,12 +43,12 @@ submit.addEventListener('submit', (e) => {
   submit.reset();
 });
 
+//Eventlistener para el form del submit de Mensajes del chat y lo enviá al backend
 submitChat.addEventListener('submit', (e) => {
   let form = submitChat.getElementsByTagName('input');
   let inputText = document.getElementById('text');
   let inputs = new Object();
   e.preventDefault();
-  //form = submitChat.getElementsByTagName('input');
 
   for (let index = 0; index < form.length; index++) {
     inputs[form[index].name] = form[index].value;
@@ -56,6 +57,7 @@ submitChat.addEventListener('submit', (e) => {
   inputText.value = '';
 });
 
+//Funcion para pintar un producto
 render = (data) => {
   let listProduct = document.getElementById('list-Product');
   let newElement = document.createElement('tr');
@@ -81,6 +83,7 @@ render = (data) => {
   listProduct.appendChild(newElement);
 };
 
+//Funcion para pintar un mensaje en el chat
 renderChat = (data) => {
   let chatUl = document.getElementById('messages');
   let newElement = document.createElement('li');

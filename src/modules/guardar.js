@@ -4,6 +4,7 @@ import moment from 'moment';
 import { productos, dbIDs, lastID, messages } from './data.js';
 import { guardarMessages } from './../modules/app.js';
 
+//Funcion encargada de validad y guardar el form cuando se llama desde el websocket
 export function guardarFromForm(data) {
   let flagError = false;
   const msgErrorParametros = 'Parámetros no validos';
@@ -41,6 +42,7 @@ export function guardarFromForm(data) {
   }
 }
 
+//Funcion que se encarga de guardar los mensajes en tanto en la variable dinámica como en el archivo
 export function guardarNewMessage(data) {
   let now = new Date();
   let date = moment(now).format('DD/MM/YYYY HH:MM:SS');

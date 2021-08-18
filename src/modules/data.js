@@ -6,8 +6,9 @@ import { leerMessages } from './app.js';
 const productos = []; //Array de productos
 const dbIDs = []; //Array de los IDs de los productos
 const lastID = { lastID: 0 }; //Ultimo ID de producto utilizado
-const messages = [];
+const messages = []; //Array de todos los mensajes del chat
 
+//Se verifica si existen mensajes guardados
 function checkMessagesOld() {
   let messageOld = JSON.parse(leerMessages());
   if (messageOld !== -1) {
@@ -15,5 +16,6 @@ function checkMessagesOld() {
   }
 }
 
+//Se inicializan los mensajes
 checkMessagesOld();
 export { productos, dbIDs, lastID, messages };
