@@ -4,21 +4,29 @@
   </div>
   <ul id='messages' class='messages'></ul>
   <div class='bottom_wrapper clearfix'>
-    <form action=''>
+    <form id='form-Chat'>
       <div class='message_input_wrapper'>
         <input
-          id='emailAddress'
+          id='email'
+          name='email'
           class='message_input'
           type='email'
           size='64'
           maxLength='64'
           required
+          placeholder='Ingrese su eMail...'
         />
 
       </div>
       <div class='message_input_wrapper'>
 
-        <input class='message_input' placeholder='Type your message here...' />
+        <input
+          id='text'
+          name='text'
+          class='message_input'
+          placeholder='Ingrese su texto...'
+          required
+        />
       </div>
       <button type='submit' class='send_message'>
         Enviar

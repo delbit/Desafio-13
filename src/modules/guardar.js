@@ -1,5 +1,8 @@
 import Producto from '../class/producto.js';
-import { productos, dbIDs, lastID } from './data.js';
+import Message from '../class/message.js';
+import moment from 'moment';
+import { productos, dbIDs, lastID, messages } from './data.js';
+import { guardarMessages } from './../modules/app.js';
 
 export function guardarFromForm(data) {
   let flagError = false;
@@ -36,4 +39,12 @@ export function guardarFromForm(data) {
     dbIDs.push(lastID.lastID);
     return 200;
   }
+}
+
+export function guardarNewMessage(data) {
+  let now = new Date();
+  let date = moment(now).format('DD/MM/YYYY HH:MM:SS');
+  const newMessage = new Message(data.email, date, data.text);
+  messages.push(newMessage);
+  guardarMessages(messages);
 }

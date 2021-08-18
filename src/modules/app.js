@@ -1,6 +1,5 @@
-import path from 'path';
 const fs = require('fs');
-import Message from '../class/message.js';
+import path from 'path';
 const publicPathFolder = path.resolve(__dirname, './../../public/');
 const publicPathFileName = path.resolve(
   __dirname,
@@ -39,7 +38,7 @@ function leerMessages() {
   }
 }
 
-function guardarMessages() {
+function guardarMessages(messages) {
   fs.writeFileSync(publicPathFileName, objToJSON(messages), 'utf-8');
 }
 

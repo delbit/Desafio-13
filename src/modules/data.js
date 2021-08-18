@@ -1,4 +1,4 @@
-import { leerMessages } from './../modules/app.js';
+import { leerMessages } from './app.js';
 
 /**
  * DATOS A MANIPULAR

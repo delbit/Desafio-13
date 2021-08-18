@@ -2,6 +2,7 @@ const socket = io.connect();
 
 // Cuando arrancamos pedimos la data que hay actualmente enviando un socket
 socket.emit('askProducts');
+socket.emit('askMessages');
 
 // Si emite un mensaje individual
 socket.on('messages', (data) => {
@@ -16,7 +17,16 @@ socket.on('update', (products) => {
   });
 });
 
+// Mensaje del chat para todos los clientes
+socket.on('updateChat', (messages) => {
+  messages.forEach((message) => {
+    renderChat(message);
+  });
+});
+
 let submit = document.getElementById('form-product');
+let submitChat = document.getElementById('form-Chat');
+//let chatUl = document.getElementById('messages');
 
 submit.addEventListener('submit', (e) => {
   let form = e.target;
@@ -30,6 +40,20 @@ submit.addEventListener('submit', (e) => {
   console.log(inputs);
   socket.emit('new-product', inputs);
   submit.reset();
+});
+
+submitChat.addEventListener('submit', (e) => {
+  let form = submitChat.getElementsByTagName('input');
+  let inputText = document.getElementById('text');
+  let inputs = new Object();
+  e.preventDefault();
+  //form = submitChat.getElementsByTagName('input');
+
+  for (let index = 0; index < form.length; index++) {
+    inputs[form[index].name] = form[index].value;
+  }
+  socket.emit('new-message', inputs);
+  inputText.value = '';
 });
 
 render = (data) => {
@@ -64,8 +88,11 @@ renderChat = (data) => {
   let htmlMessage = `
   <div class="avatar"></div>
   <div class="text_wrapper">
-    <div class="text">${data}</div>
+      <span class="email">${data.email}</span>
+      <span class="date"> [ ${data.date} ]: </span>
+      <span class="text">${data.text}</span>
   </div>`;
   newElement.innerHTML = htmlMessage;
   chatUl.appendChild(newElement);
+  chatUl.scrollTo(0, document.body.scrollHeight);
 };

@@ -8,7 +8,7 @@ body {
 }
 
 .chat_window {
-  width: calc(100% - 20px);
+  width: 100%;
   border-radius: 10px;
   background-color: #fff;
   left: 50%;
@@ -80,8 +80,18 @@ body {
   border-right-color: #c7eafc;
 }
 .messages .message.left .text {
-  color: #45829b;
+  color: hsl(148, 84%, 27%);
+  font-style: italic;
+  word-wrap: break-word;
 }
+.messages .message.left .email {
+  color: hsl(224, 84%, 24%);
+  font-weight: bold;
+}
+.messages .message.left .date {
+  color: hsl(0, 71%, 27%);
+}
+
 .messages .message.right .avatar {
   background-color: #fdbf68;
   float: right;
@@ -134,10 +144,6 @@ body {
   border-width: 15px;
   margin-top: -2px;
 }
-.messages .message .text_wrapper .text {
-  font-size: 18px;
-  font-weight: 300;
-}
 
 .bottom_wrapper {
   position: relative;
@@ -169,7 +175,7 @@ body {
 .bottom_wrapper .send_message {
   width: 140px;
   height: 50px;
-  display: inline-block;
+  /* display: inline-block; */
   border-radius: 50px;
   background-color: #a3d063;
   border: 2px solid #a3d063;
